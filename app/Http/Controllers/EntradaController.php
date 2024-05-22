@@ -10,9 +10,11 @@ class EntradaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('mv.index');
+        $texto = trim($request->input('texto')); // Corrección aquí
+        $registros = entrada::where('placa', 'like', '%' . $texto . '%')->paginate(10);
+        return view('mv.index', compact('registros', 'texto'));
     }
 
     /**
@@ -20,7 +22,8 @@ class EntradaController extends Controller
      */
     public function create()
     {
-        //
+        $entrada= new entrada();
+        return view('mv.action',['entrada'=>new entrada()]);
     }
 
     /**
@@ -28,7 +31,14 @@ class EntradaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $registro = new entrada;
+        $registro->placa=$request->input('placa');
+        $registro->fecha=$request->input('fecha');
+        $registro->save();
+        return response()->json([
+            'status'=> 'success',
+            'message'=>'Registro creado satisfactoriamente'
+        ]);
     }
 
     /**

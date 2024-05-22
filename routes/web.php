@@ -8,4 +8,5 @@ Route::get('/', function () {
     return ('welcome');
 });
 
-route::get('mantenimiento',[EntradaController::class,'index']);
+route::get('entradas',[EntradaController::class,'index']);
+route::get('vehiculos',[vehiculoController::class,'index']);

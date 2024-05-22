@@ -10,9 +10,11 @@ class vehiculoController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $texto = trim($request->input('texto')); // Corrección aquí
+        $registros = vehiculo::where('placa', 'like', '%' . $texto . '%')->paginate(10);
+        return view('vehiculo.index', compact('registros', 'texto'));
     }
 
     /**

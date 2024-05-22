@@ -30,9 +30,10 @@
                         <thead>
                           <tr>
                             <th width="20%">Opciones</th>
-                            <th width="30%">ID</th>
-                            <th width="30%">PLACA</th>
-                            <th width="50%">FECHA</th>                            
+                            <th width="10%">ID</th>
+                            <th width="20%">PLACA</th>
+                            <th width="20%">MODELO</th>
+                            <th width="30%">PROPIETARIO</th>                            
                           </tr>
                         </thead>
                         <tbody>
@@ -48,7 +49,8 @@
                             </td>
                             <td>{{$reg->id}}</td>
                             <td>{{$reg->placa}}</td>
-                            <td>{{$reg->fecha}}</td>
+                            <td>{{$reg->modelo}}</td>
+                            <td>{{$reg->propietario}}</td>
                           </tr>
                           @endforeach
                         </tbody>
